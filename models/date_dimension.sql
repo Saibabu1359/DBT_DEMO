@@ -14,8 +14,8 @@ WITH CTE AS (
     {{get_season('STARTED_AT')}} AS STATION_OF_YEAR
 
     from 
-    {{ source('demo', 'bike') }}
-    where STARTED_AT <> 'started_at'
+    {{ ref('stg_bike') }}
+    where STARTED_AT != '"starttime"' and started_at != 'starttime'
 )
 SELECT 
 * FROM CTE
